@@ -5,6 +5,10 @@
 *.settings/*
 *.settings
 
+#target folder
+*/target/*
+target/*
+*/target/**
 
 # Log file
 *.log
