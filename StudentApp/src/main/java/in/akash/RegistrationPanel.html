@@ -1,0 +1,36 @@
+<wicket:panel>
+	<div style="background-color: #E8F5E9; text-align: center; padding: 2%;">
+		<p style="font-size: 1.5em;">Register new Student</p>
+	</div>
+	
+	<form wicket:id=userForm style="text-align: center; padding: 2%;">
+		<table class="col-xs-8 col-xs-offset-2">
+			<tr class="row">
+				<td class="col-xs-2">Name</td>
+				<td class="col-xs-2"><input type="text" placeholder="Name"
+					wicket:id="name" /></td>
+			</tr>
+			<tr class="row">
+				<td class="col-xs-2">Age</td>
+				<td class="col-xs-2"><input type="text" placeholder="Age"
+					wicket:id="age" /></td>
+			</tr>
+			<tr class="row">
+				<td class="col-xs-2">Standard</td>
+				<td class="col-xs-2"><input type="text" placeholder="Standard"
+					wicket:id="standard" /></td>
+			</tr>
+			<tr class="row">
+				<td class="col-xs-2">Section</td>
+				<td class="col-xs-2"><input type="text" placeholder="Section"
+					wicket:id="section" /></td>
+			</tr>
+			<tr class="row">
+				<td class="col-xs-2"></td>
+				<td class="col-xs-2">
+					<button class="btn btn-large" style="margin-top: 8%; width: 100%;" type="submit">Save</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</wicket:panel>
