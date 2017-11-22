@@ -5,8 +5,9 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 
-import in.akash.db.StudentDao;
-import in.akash.db.entity.Student;
+import in.akash.dao.StudentDao;
+import in.akash.dao.StudentDaoImpl;
+import in.akash.db.entity.StudentEntity;
 
 public class RegistrationPanel extends Panel {
 	private static final long serialVersionUID = 1L;
@@ -31,8 +32,9 @@ public class RegistrationPanel extends Panel {
 				final String studentAge = age.getModelObject();
 				final String studentStandard = standard.getModelObject();
 				final String studentSection = section.getModelObject();
-				Student student = new Student(studentName, studentAge, studentStandard, studentSection);
-				StudentDao.saveStudent(student);
+				StudentEntity student = new StudentEntity(studentName, studentAge, studentStandard, studentSection);
+				StudentDao dao = new StudentDaoImpl();
+				dao.saveStudent(student);
 			}
 		};
 
