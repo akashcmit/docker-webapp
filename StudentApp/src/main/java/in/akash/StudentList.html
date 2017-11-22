@@ -1,0 +1,26 @@
+<wicket:panel>
+	<div
+		style="background-color: #E8F5E9; text-align: center; padding: 2%;">
+		<p style="font-size: 1.5em;">All Students</p>
+	</div>
+		
+	<div class="col-xs-12">
+		<table class="table table-striped table-bordered table-hover" style="width: 50%; margin: auto; margin-top: 3%;">
+			<tr style="background-color: #A5D6A7;">
+				<th>Id</th>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Standard</th>
+				<th>Section</th>
+			</tr>
+			<tr wicket:id="students">
+				<td wicket:id="id"></td>
+				<td wicket:id="name"></td>
+				<td wicket:id="age"></td>
+				<td wicket:id="standard"></td>
+				<td wicket:id="section"></td>
+			</tr>
+		</table>
+	</div>
+
+</wicket:panel>
