@@ -13,6 +13,7 @@ public class Application extends WebApplication {
 	@Override
 	public void init() {
 		super.init();
+		//getComponentInstantiationListeners().add(new JavaEEComponentInjector(this));
 	}
 
 }
