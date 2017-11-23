@@ -8,22 +8,24 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.PropertyModel;
 
-import in.akash.db.StudentDao;
-import in.akash.db.entity.Student;
+import in.akash.dao.StudentDao;
+import in.akash.dao.StudentDaoImpl;
+import in.akash.db.entity.StudentEntity;
 
 public class StudentList extends Panel {
 	private static final long serialVersionUID = 1L;
 
 	public StudentList(String id) {
 		super(id);
-		List<Student> students = StudentDao.getAllStudents();
+		StudentDao dao = new StudentDaoImpl();
+		List<StudentEntity> students = dao.getAllStudents();
 
-		add(new ListView<Student>("students", students) {
+		add(new ListView<StudentEntity>("students", students) {
 			private static final long serialVersionUID = 1L;
 
 			@SuppressWarnings("rawtypes")
 			@Override
-			protected void populateItem(ListItem<Student> item) {
+			protected void populateItem(ListItem<StudentEntity> item) {
 				item.add(new Label("id", new PropertyModel(item.getModel(), "id")));
 				item.add(new Label("name", new PropertyModel(item.getModel(), "name")));
 				item.add(new Label("age", new PropertyModel(item.getModel(), "age")));

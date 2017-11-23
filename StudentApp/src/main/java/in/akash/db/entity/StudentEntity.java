@@ -2,15 +2,38 @@ package in.akash.db.entity;
 
 import java.io.Serializable;
 
-public class Student implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private Integer id;
-	private String name;
-	private String age;
-	private String standard;
-	private String section;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	public Student(String name, String age, String standard, String section) {
+@Entity
+@Table(name = "STUDENT", schema = "student")
+public class StudentEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID", unique = true, nullable = false)
+	private Integer id;
+	
+	@Column(name = "NAME")
+	private String name;
+	
+	@Column(name = "AGE")
+	private String age;
+	
+	@Column(name = "STANDARD")
+	private String standard;
+	
+	@Column(name = "SECTION")
+	private String section;
+	
+	public StudentEntity() {}
+
+	public StudentEntity(String name, String age, String standard, String section) {
 		super();
 		this.name = name;
 		this.age = age;
