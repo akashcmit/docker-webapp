@@ -1,3 +1,4 @@
-FROM tomcat:8  
-COPY target/StudentApp.war /usr/local/tomcat/webapps/  
-CMD ["catalina.sh", "run"]
+FROM jboss/wildfly
+ADD target/StudentApp/WEB-INF/classes/configuration/standalone-custom.xml /opt/wildfly/standalone/configuration/
+ADD target/StudentApp.war /opt/wildfly/standalone/deployment/
+CMD ["/opt/wildfly/bin/standalone.sh", "-c", "standalone-custom.xml", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
