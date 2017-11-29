@@ -32,11 +32,11 @@
 			<version>${wicket.version}</version>
 		</dependency>
 		<!-- wicketstuff-javaee-inject for EJB Integration -->
-		<!-- <dependency>
+		<dependency>
 		    <groupId>org.wicketstuff</groupId>
 		    <artifactId>wicketstuff-javaee-inject</artifactId>
 		    <version>7.9.0</version>
-		</dependency> -->				
+		</dependency>				
 
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>

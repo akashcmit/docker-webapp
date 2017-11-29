@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root;
 
 import in.akash.db.entity.StudentEntity;
 
-@Stateless
+@Stateless(name = "env/in.akash.dao.StudentDao")
 public class StudentDaoImpl implements StudentDao {
 
 	@PersistenceContext(unitName = "primary")

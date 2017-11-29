@@ -2,8 +2,7 @@ package in.akash;
 
 import java.util.List;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
+import javax.ejb.EJB;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -16,15 +15,12 @@ import in.akash.db.entity.StudentEntity;
 
 public class StudentList extends Panel {
 	private static final long serialVersionUID = 1L;
+	
+	@EJB
 	private StudentDao dao;
 
 	public StudentList(String id) {
 		super(id);
-		try {
-			dao = (StudentDao) new InitialContext().lookup("java:app/StudentApp/StudentDaoImpl!in.akash.dao.StudentDao");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
 		List<StudentEntity> students = dao.getAllStudents();
 
 		add(new ListView<StudentEntity>("students", students) {
