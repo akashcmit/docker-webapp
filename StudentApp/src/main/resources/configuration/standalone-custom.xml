@@ -149,17 +149,17 @@
                     </security>
                 </datasource>
                 <datasource jta="true" jndi-name="java:jboss/datasources/StudentAppDs" pool-name="StudentAppDs" enabled="true" use-java-context="true" use-ccm="true">
-                  <connection-url>jdbc:sqlserver://localhost:1433;databaseName=stu-db</connection-url>
-                  <driver>sqlserver</driver>
-                  <security>
+                    <connection-url>jdbc:sqlserver://localhost:1433;databaseName=stu-db</connection-url>
+                    <driver>sqlserver</driver>
+                    <pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                        <prefill>true</prefill>
+                    </pool>
+                    <security>
                         <user-name>admin</user-name>
                         <password>Password123!</password>
                     </security>
-                  <pool>
-                    <min-pool-size>1</min-pool-size>
-                    <max-pool-size>5</max-pool-size>
-                    <prefill>true</prefill>
-                  </pool>
                 </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
@@ -430,4 +430,5 @@
             <remote-destination host="localhost" port="25"/>
         </outbound-socket-binding>
     </socket-binding-group>
+
 </server>
