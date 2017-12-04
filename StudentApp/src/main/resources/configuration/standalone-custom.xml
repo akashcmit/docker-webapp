@@ -149,7 +149,7 @@
                     </security>
                 </datasource>
                 <datasource jta="true" jndi-name="java:jboss/datasources/StudentAppDs" pool-name="StudentAppDs" enabled="true" use-java-context="true" use-ccm="true">
-                    <connection-url>jdbc:sqlserver://localhost:1433;databaseName=stu-db</connection-url>
+                    <connection-url>jdbc:sqlserver://192.168.29.91:1433;databaseName=stu-db</connection-url>
                     <driver>sqlserver</driver>
                     <pool>
                         <min-pool-size>1</min-pool-size>
