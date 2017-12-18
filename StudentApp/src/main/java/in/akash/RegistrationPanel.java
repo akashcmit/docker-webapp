@@ -1,12 +1,13 @@
 package in.akash;
 
+import javax.ejb.EJB;
+
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 
 import in.akash.dao.StudentDao;
-import in.akash.dao.StudentDaoImpl;
 import in.akash.db.entity.StudentEntity;
 
 public class RegistrationPanel extends Panel {
@@ -15,6 +16,9 @@ public class RegistrationPanel extends Panel {
 	private TextField<String> age;
 	private TextField<String> standard;
 	private TextField<String> section;
+	
+	@EJB
+	private StudentDao dao;
 
 	public RegistrationPanel(String id) {
 		super(id);
@@ -33,7 +37,6 @@ public class RegistrationPanel extends Panel {
 				final String studentStandard = standard.getModelObject();
 				final String studentSection = section.getModelObject();
 				StudentEntity student = new StudentEntity(studentName, studentAge, studentStandard, studentSection);
-				StudentDao dao = new StudentDaoImpl();
 				dao.saveStudent(student);
 			}
 		};

@@ -12,6 +12,7 @@
 		<wicket.version>7.9.0</wicket.version>
 		<log4j.version>2.6.2</log4j.version>
 		<junit.version>4.12</junit.version>
+		<version.org.jboss.spec.jboss.javaee.6.0>3.0.0.Final</version.org.jboss.spec.jboss.javaee.6.0>
 	</properties>
 
 	<!-- JBoss repository for Hibernate -->
@@ -30,6 +31,12 @@
 			<artifactId>wicket-core</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
+		<!-- wicketstuff-javaee-inject for EJB Integration -->
+		<dependency>
+		    <groupId>org.wicketstuff</groupId>
+		    <artifactId>wicketstuff-javaee-inject</artifactId>
+		    <version>7.9.0</version>
+		</dependency>				
 
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>
@@ -55,7 +62,6 @@
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>1.0.1.Final</version>
 		</dependency>
 		
 		<!-- SQL SERVER DEPENDENCIES -->
@@ -64,8 +70,40 @@
 		    <artifactId>mssql-jdbc</artifactId>
 		    <version>6.2.1.jre8</version>
 		</dependency>
+		
+		<!-- EJB3 DEPENDENCIES -->
+		<dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.annotation</groupId>
+            <artifactId>jboss-annotations-api_1.1_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- INFINISPAN DEPENDENCIES -->
+        <dependency>
+	      <groupId>org.infinispan</groupId>
+	      <artifactId>infinispan-core</artifactId>
+	      <version>9.1.0.Final</version>
+	    </dependency>
 
 	</dependencies>
+	
+	<dependencyManagement>
+		<dependencies>
+			<!-- EJB3 DEPENDENCIES -->
+			<dependency>
+				<groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-javaee-6.0</artifactId>
+                <version>${version.org.jboss.spec.jboss.javaee.6.0}</version>
+                <type>pom</type>
+                <scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<finalName>StudentApp</finalName>

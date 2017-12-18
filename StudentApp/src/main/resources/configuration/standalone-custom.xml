@@ -149,12 +149,17 @@
                     </security>
                 </datasource>
                 <datasource jta="true" jndi-name="java:jboss/datasources/StudentAppDs" pool-name="StudentAppDs" enabled="true" use-java-context="true" use-ccm="true">
-                  <connection-url>jdbc:sqlserver://localhost:1433;databaseName=stu-db</connection-url>
+                  <!-- <connection-url>jdbc:sqlserver://localhost:1433;databaseName=stu-db</connection-url> -->
+                  <connection-url>jdbc:sqlserver://192.168.29.91:1401;databaseName=studb</connection-url>
                   <driver>sqlserver</driver>
+                  <!-- <security>
+                      <user-name>admin</user-name>
+                      <password>Password123!</password>
+                  </security> -->
                   <security>
-                        <user-name>admin</user-name>
-                        <password>Password123!</password>
-                    </security>
+                      <user-name>SA</user-name>
+                      <password>Welcome@123</password>
+                  </security>
                   <pool>
                     <min-pool-size>1</min-pool-size>
                     <max-pool-size>5</max-pool-size>
