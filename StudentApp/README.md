@@ -61,13 +61,13 @@ yum install git
 wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
 ```
 
-###Install
+### Install
 ```
 yum install apache-maven
 ```
 
 ## Install Docker
-###download Community Edtion(CE) package:
+### Download Community Edtion(CE) package:
 ```
 wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-17.09.1.ce-1.el7.centos.x86_64.rpm
 ```
