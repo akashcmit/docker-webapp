@@ -1,4 +1,4 @@
-#Application setup on CentOS 7
+# Application setup on CentOS 7
 
 ## Update packages
 ```
