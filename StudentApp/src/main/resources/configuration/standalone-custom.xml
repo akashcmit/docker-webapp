@@ -29,6 +29,7 @@
         <extension module="org.wildfly.extension.request-controller"/>
         <extension module="org.wildfly.extension.security.manager"/>
         <extension module="org.wildfly.extension.undertow"/>
+        <extension module="org.jboss.as.clustering.jgroups"/>
     </extensions>
 
 
@@ -412,6 +413,30 @@
             <client-config name="Standard-Client-Config"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:weld:3.0"/>
+
+        <subsystem xmlns="urn:jboss:domain:jgroups:4.0">
+            <!-- <channels default="hibernatecache">
+                <channel name="hibernatecache" stack="udp"/>
+            </channels> -->
+            <stacks>
+                <stack name="udp">
+                    <transport type="UDP" socket-binding="jgroups-udp"/>
+                    <protocol type="PING"/>
+                    <protocol type="MERGE3"/>
+                    <protocol type="FD_SOCK" socket-binding="jgroups-udp-fd"/>
+                    <protocol type="FD_ALL"/>
+                    <protocol type="VERIFY_SUSPECT"/>
+                    <protocol type="pbcast.NAKACK2"/>
+                    <protocol type="UNICAST3"/>
+                    <protocol type="pbcast.STABLE"/>
+                    <protocol type="pbcast.GMS"/>
+                    <protocol type="UFC"/>
+                    <protocol type="MFC"/>
+                    <protocol type="FRAG2"/>
+                </stack>
+            </stacks>
+        </subsystem>
+
     </profile>
 
     <interfaces>
@@ -420,6 +445,9 @@
         </interface>
         <interface name="public">
             <inet-address value="${jboss.bind.address:127.0.0.1}"/>
+        </interface>
+        <interface name="jgroups-intf">
+            <inet-address value="127.0.0.1"/>
         </interface>
     </interfaces>
 
@@ -431,6 +459,10 @@
         <socket-binding name="https" port="${jboss.https.port:8443}"/>
         <socket-binding name="txn-recovery-environment" port="4712"/>
         <socket-binding name="txn-status-manager" port="4713"/>
+
+        <socket-binding name="jgroups-udp" interface="jgroups-intf" port="${jgroups.port:55200}" multicast-address="${jboss.default.multicast.address:10.0.4.4}" multicast-port="${jgroups.multicast.port:45688}"/>
+        <socket-binding name="jgroups-udp-fd" interface="jgroups-intf" port="54200"/>
+
         <outbound-socket-binding name="mail-smtp">
             <remote-destination host="localhost" port="25"/>
         </outbound-socket-binding>
