@@ -151,7 +151,7 @@
                 </datasource>
                 <datasource jta="true" jndi-name="java:jboss/datasources/StudentAppDs" pool-name="StudentAppDs" enabled="true" use-java-context="true" use-ccm="true">
                   <!-- <connection-url>jdbc:sqlserver://localhost:1433;databaseName=stu-db</connection-url> -->
-                  <connection-url>jdbc:sqlserver://192.168.29.91:1401;databaseName=studb</connection-url>
+                  <connection-url>jdbc:sqlserver://10.0.4.4:1401;databaseName=studb</connection-url>
                   <driver>sqlserver</driver>
                   <!-- <security>
                       <user-name>admin</user-name>
@@ -413,7 +413,7 @@
             <client-config name="Standard-Client-Config"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:weld:3.0"/>
-
+	<!--
         <subsystem xmlns="urn:jboss:domain:jgroups:4.0" default-stack="tcp">
             <stack name="udp">
                 <transport type="UDP" socket-binding="jgroups-udp"/>
@@ -452,7 +452,7 @@
                 <protocol type="RSVP"/>
             </stack>
         </subsystem>
-
+	-->
     </profile>
 
     <interfaces>
@@ -462,9 +462,11 @@
         <interface name="public">
             <inet-address value="${jboss.bind.address:127.0.0.1}"/>
         </interface>
+	<!--
         <interface name="jgroups-intf">
             <inet-address value="127.0.0.1"/>
         </interface>
+	-->
     </interfaces>
 
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
