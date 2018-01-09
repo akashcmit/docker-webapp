@@ -413,10 +413,13 @@
             <client-config name="Standard-Client-Config"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:weld:3.0"/>
-	<!--
-        <subsystem xmlns="urn:jboss:domain:jgroups:4.0" default-stack="tcp">
+
+        <subsystem xmlns="urn:jboss:domain:jgroups:4.0" default-stack="udp">
+	  <stacks>
             <stack name="udp">
-                <transport type="UDP" socket-binding="jgroups-udp"/>
+                <transport type="UDP" socket-binding="jgroups-udp">
+		   <property name="ip_mcast">false</property>
+		</transport>
                 <protocol type="PING"/>
                 <protocol type="MERGE3"/>
                 <protocol type="FD_SOCK" socket-binding="jgroups-udp-fd"/>
@@ -431,28 +434,8 @@
                 <protocol type="FRAG2"/>
                 <protocol type="RSVP"/>
             </stack>
-            <stack name="tcp">
-                <transport type="TCP" socket-binding="jgroups-tcp"/>
-                <protocol type="TCPPING">
-                    <property name="initial_hosts">$YOUR_FIRST_IP_ADDRESS[7600]</property>
-                    <property name="port_range">0</property>
-                    <property name="timeout">3000</property>
-                    <property name="num_initial_members">2</property>
-                </protocol>
-                <protocol type="MERGE2"/>
-                <protocol type="FD_SOCK" socket-binding="jgroups-tcp-fd"/>
-                <protocol type="FD"/>
-                <protocol type="VERIFY_SUSPECT"/>
-                <protocol type="pbcast.NAKACK2"/>
-                <protocol type="UNICAST3"/>
-                <protocol type="pbcast.STABLE"/>
-                <protocol type="pbcast.GMS"/>
-                <protocol type="MFC"/>
-                <protocol type="FRAG2"/>
-                <protocol type="RSVP"/>
-            </stack>
+	  </stacks>
         </subsystem>
-	-->
     </profile>
 
     <interfaces>
@@ -462,11 +445,9 @@
         <interface name="public">
             <inet-address value="${jboss.bind.address:127.0.0.1}"/>
         </interface>
-	<!--
         <interface name="jgroups-intf">
             <inet-address value="127.0.0.1"/>
         </interface>
-	-->
     </interfaces>
 
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
@@ -478,8 +459,9 @@
         <socket-binding name="txn-recovery-environment" port="4712"/>
         <socket-binding name="txn-status-manager" port="4713"/>
 
-        <!-- <socket-binding name="jgroups-udp" interface="jgroups-intf" port="${jgroups.port:55200}" multicast-address="${jboss.default.multicast.address:10.0.4.4}" multicast-port="${jgroups.multicast.port:45688}"/>
-        <socket-binding name="jgroups-udp-fd" interface="jgroups-intf" port="54200"/> -->
+        <socket-binding name="jgroups-udp" interface="jgroups-intf" port="${jgroups.port:55200}" multicast-address="${jboss.default.multicast.address:230.0.0.4}" multicast-port="${jgroups.multicast.port:45688}"/>
+
+	<!--        <socket-binding name="jgroups-udp-fd" interface="jgroups-intf" port="54200"/>	-->
 
         <outbound-socket-binding name="mail-smtp">
             <remote-destination host="localhost" port="25"/>
